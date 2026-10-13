@@ -17,11 +17,14 @@ python3 -m http.server 8000
 ## Publishing (GitHub Pages via Actions)
 
 The workflow in `.github/workflows/deploy.yml` builds nothing and deploys the
-repo root straight to Pages on every push to `main`. One-time setup:
+repo root straight to Pages on every push to `main`. One-time setup (must be
+done in the web UI — the default `GITHUB_TOKEN` cannot enable Pages itself):
 
 1. Repo **Settings → Pages → Build and deployment → Source**: pick
-   **GitHub Actions**.
-2. Push to `main` (or run the workflow manually from the **Actions** tab).
+   **GitHub Actions**. If the first run already failed with
+   *"Pages is not enabled"*, this is expected — enable it, then
+   **Actions → re-run the failed job**.
+2. Push to `main` (or re-run the workflow from the **Actions** tab).
 
 The site appears at `https://fynchatdesktop.github.io/fynchat-lp/`.
 

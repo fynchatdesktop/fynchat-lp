@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Verify the site is complete
         run: |
@@ -37,14 +37,33 @@ jobs:
           done
           echo "Site looks complete."
 
+      # configure-pages cannot enable Pages with the default GITHUB_TOKEN,
+      # so check up front and fail with a clickable instruction instead of
+      # an opaque 404 from the API.
+      - name: Check that Pages is enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+          if [ "$code" = "200" ]; then
+            echo "Pages is enabled."
+          else
+            echo "::error::GitHub Pages is not enabled for this repository (GET /pages returned $code)."
+            echo "::error::Open https://github.com/${{ github.repository }}/settings/pages and set Source to 'GitHub Actions', then re-run this workflow."
+            exit 1
+          fi
+
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
