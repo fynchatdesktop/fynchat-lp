@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FynChat — a messenger built from scratch</title>
+  <meta name="description" content="FynChat is a Telegram-style messaging platform written in Go: a native desktop client built with Fyne, a Go + PostgreSQL backend, and FCP — its own binary wire protocol. MIT licensed, pre-alpha, open source.">
+  <meta name="theme-color" content="#0E1621">
+  <meta property="og:title" content="FynChat — a messenger built from scratch">
+  <meta property="og:description" content="Native desktop client, Go backend, and its own binary wire protocol. No Electron, no browser tab — one Go binary.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/shot-shell-chat.png">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ======================= Header ======================= -->
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="#top">
+        <img src="assets/icon.png" alt="" width="34" height="34">
+        <span>FynChat</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#conversations">Conversations</a></li>
+        <li><a href="#screens">Screens</a></li>
+        <li><a href="#fcp">FCP</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#start">Get started</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch theme">
+          <svg class="ic-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ic-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <a class="btn btn-ghost nav-repo" href="https://github.com/fynchatdesktop" rel="noopener">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.6.5.5 5.7.5 12.1c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6a11.6 11.6 0 0 0 7.9-11C23.5 5.7 18.4.5 12 .5z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <button class="icon-btn nav-burger" id="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ======================= Hero ======================= -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="badge reveal">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Pre-alpha &middot; open source &middot; MIT
+          </span>
+          <h1 class="reveal">A messenger built <span class="grad">from scratch.</span></h1>
+          <p class="lede reveal">
+            FynChat is a Telegram-style messaging platform written in Go — a native
+            desktop client that is <strong>not an Electron wrapper and not a browser
+            tab</strong>, a Go&nbsp;+&nbsp;PostgreSQL backend, and FCP, its own binary
+            wire protocol. One window, two panes, zero web views.
+          </p>
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary" href="https://github.com/fynchatdesktop/fdesktop" rel="noopener">
+              Get the source
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="#start">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Run it in demo mode
+            </a>
+          </div>
+          <ul class="hero-chips reveal" aria-label="Tech facts">
+            <li>Go 1.26</li>
+            <li>Fyne v2.8</li>
+            <li>Windows · macOS · Linux</li>
+            <li>MIT licensed</li>
+          </ul>
+        </div>
+
+        <figure class="hero-shot reveal">
+          <div class="window" role="img" aria-label="Screenshot of the FynChat desktop app: channel list on the left, open conversation on the right">
+            <div class="window-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="window-title">FynChat</span>
+            </div>
+            <img src="assets/shot-shell-chat.png" alt="FynChat desktop app showing the two-pane layout: the channel list on the left and a conversation with Telegram-style message bubbles on the right" width="1000" height="680" fetchpriority="high">
+          </div>
+          <figcaption>One window, two panes — the layout Telegram Desktop made famous.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================= Features ======================= -->
+    <section class="section" id="features">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">The desktop client</span>
+          <h2>Everything a chat app should do, in a single native binary.</h2>
+          <p>No framework, no state-management library — just structs, fields and callbacks on top of <a href="https://fyne.io" rel="noopener">Fyne</a>.</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <h3>Register &amp; login</h3>
+            <p>Forms are validated before a single byte leaves the machine; the JWT lives in the shared client.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+            <h3>Channel list</h3>
+            <p>Avatars, channel type, one-click creation, pull to refresh. The list stays put while the chat beside it changes.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h3>Real chat bubbles</h3>
+            <p>Own messages on the right, consecutive messages grouped, date separators, sender names — and live push over WebSocket.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+            <h3>Channel avatars</h3>
+            <p>Pick an image from disk with a live preview of how the channel will look. No image? A coloured circle with the first letter — the same trick Telegram uses.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+            <h3>Auto-growing composer</h3>
+            <p>The message box grows as you type, up to six rows, and shrinks back when the text is cleared. Emoji palette at the caret, attachments via the system file picker.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+            <h3>Dark &amp; light</h3>
+            <p>The palette icon in the header switches themes, and the choice is remembered across restarts.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div>
+            <h3>Stays where you left off</h3>
+            <p>Session, last open channel and theme are persisted in app preferences — the app reopens where you were, not on the login form.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+            <h3>One window, two panes</h3>
+            <p>Telegram Desktop layout with a draggable divider and a slide-out menu that closes on tap. Plus a settings screen for account, theme, server URL and shortcuts.</p>
+          </article>
+        </div>
+
+        <div class="craft reveal">
+          <h3>Craft details you feel more than see</h3>
+          <ul class="craft-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Errors use a banner, not a dialog.</strong> A failed send leaves your text in the box so you can retry instead of retyping.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Buttons lock while a request is in flight</strong> — a double click can never send the same message twice.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>The scroll only follows new messages when you are already at the bottom.</strong> Reading older messages is never interrupted by someone talking.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Done the boring way on purpose.</strong> Every HTTP call runs on a goroutine; every UI mutation goes through <code>fyne.Do</code>. Session expiry drops you back to login gracefully instead of failing every action.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Conversations ======================= -->
+    <section class="section section-alt" id="conversations">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Three ways to talk</span>
+          <h2>DMs, groups and broadcast channels.</h2>
+        </header>
+        <div class="conv-grid">
+          <article class="conv-card reveal">
+            <div class="conv-tag">Private</div>
+            <h3>Direct messages</h3>
+            <p>One-to-one. Opening a chat with someone gets-or-creates the conversation for that pair — no room to name, no link to share.</p>
+          </article>
+          <article class="conv-card reveal">
+            <div class="conv-tag">Group</div>
+            <h3>Groups</h3>
+            <p>Many people in one thread — <em>&ldquo;anyone with the link can join&rdquo;</em>. Conversations are member-gated on the server: non-members get a 403 on history, not a maybe.</p>
+          </article>
+          <article class="conv-card reveal">
+            <div class="conv-tag">Broadcast</div>
+            <h3>Channels</h3>
+            <p><em>&ldquo;Everyone reads, only owners post.&rdquo;</em> Announcement-grade rooms with the same bubbles, avatars and shortcuts as everything else.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Screens ======================= -->
+    <section class="section" id="screens">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Screens</span>
+          <h2>It looks like the app you already know how to use.</h2>
+          <p>Click any screenshot to enlarge.</p>
+        </header>
+        <div class="shots reveal">
+          <button class="shot" type="button" data-full="assets/shot-shell-chat.png" data-caption="Chat view — bubbles, grouping, date separators">
+            <img src="assets/shot-shell-chat.png" alt="The FynChat chat view with an open conversation" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">Chat view</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/shot-shell-empty.png" data-caption="Fresh install — nothing open yet">
+            <img src="assets/shot-shell-empty.png" alt="The FynChat window with the empty-chat state" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">Empty state</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/shot-login.png" data-caption="Login — welcome back">
+            <img src="assets/shot-login.png" alt="The FynChat login screen" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">Login</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/shot-contacts.png" data-caption="Contacts">
+            <img src="assets/shot-contacts.png" alt="The FynChat contacts screen" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">Contacts</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/shot-settings.png" data-caption="Settings — account, theme, server URL, shortcuts">
+            <img src="assets/shot-settings.png" alt="The FynChat settings screen" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">Settings</span>
+          </button>
+          <button class="shot" type="button" data-full="assets/shot-dialog-channel.png" data-caption="New channel — type, avatar preview, join policy">
+            <img src="assets/shot-dialog-channel.png" alt="The create-a-channel dialog with avatar preview" loading="lazy" width="1000" height="680">
+            <span class="shot-cap">New channel</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= FCP ======================= -->
+    <section class="section section-alt" id="fcp">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">FCP — the FynChat Protocol</span>
+          <h2>A binary wire protocol, designed frame by frame.</h2>
+          <p>REST and WebSockets carry today's traffic. <strong>FCP</strong> is the transport built to replace them: fixed 20-byte headers, big-endian, versioned, bounded. <a href="https://github.com/fynchatdesktop/fynproto" rel="noopener">v0.1.0 — early stage, API may change.</a></p>
+        </header>
+
+        <div class="fcp-frame reveal" role="img" aria-label="Diagram of the FCP frame: a 20-byte header followed by payload and HMAC">
+          <div class="frame-header-label">Header &mdash; 20 bytes, fixed</div>
+          <div class="frame-row">
+            <div class="frame-field" style="flex:2"><span class="f-name">Magic</span><span class="f-meta">2B · 0xFC01</span></div>
+            <div class="frame-field" style="flex:1"><span class="f-name">Ver</span><span class="f-meta">1B · 0x01</span></div>
+            <div class="frame-field" style="flex:1"><span class="f-name">Type</span><span class="f-meta">1B</span></div>
+            <div class="frame-field" style="flex:3"><span class="f-name">Message&nbsp;ID</span><span class="f-meta">8B</span></div>
+            <div class="frame-field" style="flex:2"><span class="f-name">Sequence</span><span class="f-meta">4B</span></div>
+            <div class="frame-field" style="flex:2"><span class="f-name">Length</span><span class="f-meta">4B</span></div>
+          </div>
+          <div class="frame-row frame-row-2">
+            <div class="frame-field frame-payload"><span class="f-name">Payload</span><span class="f-meta">Length bytes</span></div>
+            <div class="frame-field frame-hmac"><span class="f-name">HMAC</span><span class="f-meta">integrity</span></div>
+          </div>
+        </div>
+
+        <div class="fcp-grid">
+          <article class="card reveal">
+            <h3>Nine message types</h3>
+            <p>Key exchange, auth request &amp; response, RPC call, RPC result, server update, ping, pong, error — RPC plus server-push, the shape real messaging needs.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Bounded by design</h3>
+            <p>A 1&nbsp;MiB maximum frame size guards against the classic amplification trick; framing uses <code>io.ReadFull</code> and single-write sends over plain <code>net.Conn</code>.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Integrity hooks built in</h3>
+            <p>Every frame reserves an HMAC field and a key-exchange stage — the bones of a real security story are in the format, waiting for the crypto to land.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Platform ======================= -->
+    <section class="section" id="platform">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">The platform</span>
+          <h2>Three repositories, one messenger.</h2>
+        </header>
+        <div class="repo-grid">
+          <a class="repo reveal" href="https://github.com/fynchatdesktop/fdesktop" rel="noopener">
+            <div class="repo-top">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8"/></svg>
+              <code>fdesktop</code>
+            </div>
+            <h3>Desktop client</h3>
+            <p>The Fyne GUI: auth screens, channel list, chat view, settings — the HTTP client and the WebSocket view. Go 1.26, cross-compiled for Windows, macOS and Linux.</p>
+            <span class="repo-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="repo reveal" href="https://github.com/fynchatdesktop/fynchat-backend" rel="noopener">
+            <div class="repo-top">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><path d="M6 6.5h.01M6 17.5h.01"/></svg>
+              <code>fynchat-backend</code>
+            </div>
+            <h3>API &amp; storage</h3>
+            <p>Go + Gin REST API with JWT auth, PostgreSQL persistence, contacts, channels and history — member-gated so private rooms stay private.</p>
+            <span class="repo-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="repo reveal" href="https://github.com/fynchatdesktop/fynproto" rel="noopener">
+            <div class="repo-top">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+              <code>fynproto</code>
+            </div>
+            <h3>FCP protocol</h3>
+            <p>The binary codec, the TCP transport and runnable client &amp; server examples. Tagged v0.1.0 and ready for its first real deployments.</p>
+            <span class="repo-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Get started ======================= -->
+    <section class="section section-alt" id="start">
+      <div class="container start-grid">
+        <header class="section-head start-copy reveal">
+          <span class="kicker">Get started</span>
+          <h2>Running it takes one command.</h2>
+          <p>The desktop client ships a <strong>demo mode</strong> with canned contacts and channels — you can click around the whole app without standing up a server.</p>
+          <p class="start-note">You need <a href="https://go.dev/dl/" rel="noopener">Go 1.26+</a>. No Node, no browser, no build step to see it.</p>
+        </header>
+
+        <div class="code-stack reveal">
+          <div class="code">
+            <div class="code-bar">
+              <span>Try it — demo mode, no server</span>
+              <button class="copy-btn" type="button" data-copy="git clone https://github.com/fynchatdesktop/fdesktop&#10;cd fdesktop&#10;FYNCHAT_DEMO=1 go run .">Copy</button>
+            </div>
+            <pre><code><span class="c-p">$</span> git clone https://github.com/fynchatdesktop/fdesktop
+<span class="c-p">$</span> cd fdesktop
+<span class="c-p">$</span> FYNCHAT_DEMO=1 go run .</code></pre>
+          </div>
+          <div class="code">
+            <div class="code-bar">
+              <span>The full stack</span>
+              <button class="copy-btn" type="button" data-copy="git clone https://github.com/fynchatdesktop/fynchat-backend&#10;git clone https://github.com/fynchatdesktop/fynproto&#10;go run .">Copy</button>
+            </div>
+            <pre><code><span class="c-p">$</span> git clone https://github.com/fynchatdesktop/fynchat-backend
+<span class="c-p">$</span> git clone https://github.com/fynchatdesktop/fynproto
+<span class="c-p">$</span> go run .   <span class="c-c"># point the client at it with FYNCHAT_API_URL</span></code></pre>
+          </div>
+          <div class="code">
+            <div class="code-bar">
+              <span>Keyboard shortcuts</span>
+            </div>
+            <pre class="keys"><code><kbd>Ctrl</kbd>+<kbd>Enter</kbd> send · <kbd>Ctrl</kbd>+<kbd>N</kbd> new channel · <kbd>Ctrl</kbd>+<kbd>F</kbd> search · <kbd>Ctrl</kbd>+<kbd>,</kbd> settings · <kbd>Ctrl</kbd>+<kbd>/</kbd> all shortcuts</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= Status ======================= -->
+    <section class="section" id="status">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Status &amp; roadmap</span>
+          <h2>Pre-alpha, and honest about it.</h2>
+          <p>It works end to end — login, channel list, history and sending against a live database — but expect rough edges and breaking changes. Here is where things stand.</p>
+        </header>
+        <div class="roadmap">
+          <div class="road-col reveal">
+            <h3><span class="road-ic done" aria-hidden="true">&#10003;</span> Landed</h3>
+            <ul>
+              <li>Desktop UI: auth, channels, chat, themes, shortcuts, settings</li>
+              <li>Backend REST API with JWT auth and PostgreSQL</li>
+              <li>Live message push over WebSocket</li>
+              <li>FCP v0.1.0 — codec, TCP transport, client &amp; server examples</li>
+            </ul>
+          </div>
+          <div class="road-col reveal">
+            <h3><span class="road-ic next" aria-hidden="true">&#8594;</span> Next</h3>
+            <ul>
+              <li>FCP as the client's transport, replacing REST + WebSocket</li>
+              <li>Attachment uploads end to end</li>
+              <li>Filling in the protocol's HMAC and key-exchange hooks</li>
+              <li>Search, replies and reactions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CTA ======================= -->
+    <section class="cta-band">
+      <div class="container cta-inner reveal">
+        <img class="cta-logo" src="assets/icon.png" alt="" width="64" height="64">
+        <h2>Read the code. Break it. Tell us what hurts.</h2>
+        <p>FynChat is MIT licensed and built in the open. Every repository is on GitHub.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/fynchatdesktop/fdesktop" rel="noopener">fdesktop</a>
+          <a class="btn btn-secondary" href="https://github.com/fynchatdesktop/fynchat-backend" rel="noopener">fynchat-backend</a>
+          <a class="btn btn-secondary" href="https://github.com/fynchatdesktop/fynproto" rel="noopener">fynproto</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================= Footer ======================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon.png" alt="" width="28" height="28">
+        <span>FynChat</span>
+      </div>
+      <p class="footer-note">A messenger platform in three repositories — native client, Go backend, binary protocol.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/fynchatdesktop/fdesktop" rel="noopener">fdesktop</a></li>
+        <li><a href="https://github.com/fynchatdesktop/fynchat-backend" rel="noopener">backend</a></li>
+        <li><a href="https://github.com/fynchatdesktop/fynproto" rel="noopener">fynproto</a></li>
+        <li><a href="https://fyne.io" rel="noopener">Fyne</a></li>
+      </ul>
+      <p class="footer-legal">&copy; 2026 FynChat &middot; <a href="https://github.com/fynchatdesktop/fdesktop/blob/main/LICENSE" rel="noopener">MIT License</a> &middot; pre-alpha software, expect things to break</p>
+    </div>
+  </footer>
+
+  <!-- ======================= Lightbox ======================= -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close icon-btn" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <figure>
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

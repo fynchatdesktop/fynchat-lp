@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN for Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, never cancel an in-progress one
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify the site is complete
+        run: |
+          test -f index.html || { echo "index.html missing"; exit 1; }
+          test -f styles.css || { echo "styles.css missing"; exit 1; }
+          test -f script.js  || { echo "script.js missing";  exit 1; }
+          # every local asset referenced in index.html must exist
+          grep -oE '(assets/[A-Za-z0-9._-]+)' index.html | sort -u | while read -r f; do
+            test -f "$f" || { echo "referenced asset missing: $f"; exit 1; }
+          done
+          echo "Site looks complete."
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
